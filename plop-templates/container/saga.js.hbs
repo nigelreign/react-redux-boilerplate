@@ -1,0 +1,34 @@
+import { call, put, takeLatest } from 'redux-saga/effects';
+
+import getConfig from 'config';
+import {{ camelCase name }}Routine from './routines';
+
+const axios = require('axios');
+
+function* fetch{{ pascalCase name }}Data(action) {
+  const config = getConfig();
+
+  const { customerId } = action.payload;
+
+  const getCustomerByIdUrl = `${config.api.protocol}://${config.api.host}:${config.api.port}/customer/${customerId}`;
+  try {
+    // trigger request action
+    yield put({{ camelCase name }}Routine.request());
+
+    const response = yield call(axios.get, getCustomerByIdUrl);
+    // if request successfully finished
+    yield put({{ camelCase name }}Routine.success(response.data));
+  } catch (error) {
+    // if request failed
+    yield put({{ camelCase name }}Routine.failure(error.message));
+  } finally {
+    // trigger fulfill action
+    yield put({{ camelCase name }}Routine.fulfill());
+  }
+}
+
+function* {{ camelCase name }}Saga() {
+  yield takeLatest([{{ camelCase name }}Routine.TRIGGER], fetch{{ pascalCase name }}Data);
+}
+
+export default {{ camelCase name }}Saga;

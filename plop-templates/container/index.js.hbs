@@ -1,0 +1,142 @@
+import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import {
+  STATE_NEW,
+  STATE_LOADING,
+  STATE_ERROR,
+  STATE_OK,
+} from 'utils/constants';
+import { Container, Loader, Table, Message } from 'semantic-ui-react';
+
+/**
+ * @summary Render when data retrieval is successful
+ *
+ * @param {object} props The components' props
+ * @returns {successComponent}
+ */
+const renderSuccess = (props) => {
+  const successComponent = (
+    <Container>
+      <p>
+        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
+        ligula eget dolor. Aenean massa strong. Cum sociis natoque penatibus et
+        magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis,
+        ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa
+        quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget,
+        arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.
+        Nullam dictum felis eu pede link mollis pretium. Integer tincidunt. Cras
+        dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus.
+        Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.
+        Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus
+        viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet.
+        Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi.
+      </p>
+    </Container>
+  );
+
+  return successComponent;
+};
+
+/**
+ * @summary Render when data retrieval returns an error
+ *
+ * @param {string} errorMessage The error message
+ * @returns {errorComponent}
+ */
+const renderError = (errorMessage) => {
+  let message = 'An error occured';
+  if (errorMessage) {
+    message = errorMessage;
+  }
+  const errorComponent = (
+    <Message negative>
+      <p>{message}</p>
+    </Message>
+  );
+  return errorComponent;
+};
+
+/**
+ * @summary Render while data retrieval is happening
+ *
+ * @returns {loadingComponent}
+ */
+const renderLoading = (loadingMessage) => {
+  const loadingComponent = (
+      <Loader size="mini">{loadingMessage}</Loader>
+  );
+  return loadingComponent;
+};
+
+/**
+ * @summary Render while data retrieval returns an empty response
+ *
+ * @returns {emptyComponent}
+ */
+const renderEmpty = () => {
+  const emptyComponent = <></>;
+  return emptyComponent;
+};
+
+/**
+ * @summary {{ pascalCase name }} component
+ *
+ * @param {Props} props
+ * @component
+ */
+const {{ pascalCase name }} = (props) => {
+
+  let renderFunction;
+  const { containerState, errorMessage } = props;
+
+  switch (containerState) {
+    case STATE_OK: {
+      renderFunction = () => renderSuccess(props);
+      break;
+    }
+    case STATE_ERROR: {
+      renderFunction = () => renderError(errorMessage);
+      break;
+    }
+    case STATE_LOADING: {
+      renderFunction = () => renderLoading();
+      break;
+    }
+    case STATE_NEW: {
+      renderFunction = () => renderEmpty();
+      break;
+    }
+    default:
+      renderFunction = () => renderEmpty();
+      break;
+  }
+
+  return renderFunction();
+};
+
+{{ pascalCase name }}.defaultProps = {};
+
+{{ pascalCase name }}.propTypes = {}
+
+/**
+ * @summary map state to props
+ *
+ * @param {object} state Global state
+ * @returns {object}
+ */
+const mapStateToProps = (state) => {
+  return {};
+};
+
+/**
+ * @summary map dispatch methods to props
+ *
+ * @param {dispatch} dispatch
+ * @returns {object}
+ */
+const mapDispatchToProps = (dispatch) => {
+  return {};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)({{ pascalCase name }});

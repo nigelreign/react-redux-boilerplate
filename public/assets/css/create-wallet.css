@@ -1,0 +1,17 @@
+.form-check-input:checked {
+    background-color: rgba(255, 255, 255, 0.15) !important;
+    border-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #c2c2c2 !important;
+    opacity: 1!important; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #c2c2c2!important;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+    color: #c2c2c2!important;
+}

@@ -1,0 +1,21 @@
+import React from 'react';
+import { shallow } from 'enzyme';
+import { {{ pascalCase name }} } from '../index';
+
+describe('<{{ pascalCase name }} />', () => {
+  it('Should have {{ titleCase name}} text', () => {
+    expect(
+      shallow(
+        <{{ pascalCase name }}
+          data={[{}]}
+          count={0}
+          currentPage={0}
+          containerState="NEW"
+          activeRecordsOnly
+          errorMessage="Error"
+          getRecords={() => ''}
+        />,
+      ).text(),
+    ).toBe('{{ titleCase name}}');
+  });
+});

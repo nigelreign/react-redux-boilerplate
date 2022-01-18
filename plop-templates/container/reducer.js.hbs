@@ -1,0 +1,45 @@
+import { fromJS } from 'immutable';
+import {
+  STATE_NEW,
+  STATE_LOADING,
+  STATE_ERROR,
+  STATE_OK,
+} from 'utils/constants';
+
+import {{ camelCase name }}Routine from './routines';
+
+const initialState = fromJS({
+  containerState: STATE_NEW,
+  errorMessage: null,
+  data: [],
+});
+
+const {{ camelCase name }}Reducer = (state = initialState, action) => {
+  switch (action.type) {
+    case {{ camelCase name }}Routine.TRIGGER:
+      return state.merge({
+        loading: true,
+        containerState: STATE_LOADING,
+      });
+    case {{ camelCase name }}Routine.REQUEST:
+      return state.merge({
+        loading: false,
+        containerState: STATE_LOADING,
+      });
+    case {{ camelCase name }}Routine.SUCCESS:
+      return state.merge({
+        loading: false,
+        data: action.payload.data,
+        containerState: STATE_OK,
+      });
+    case {{ camelCase name }}Routine.FAILURE:
+      return state.merge({
+        containerState: STATE_ERROR,
+        errorMessage: action.payload ? action.payload.message : '',
+      });
+    default:
+      return state;
+  }
+};
+
+export default {{ camelCase name }}Reducer;
