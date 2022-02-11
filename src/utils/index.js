@@ -1,11 +1,2 @@
-const isLoggedIn = () => {
-  const userInfo = localStorage.getItem('userInfo');
-
-  if (userInfo !== null) {
-    const localStorageLoggedIn = JSON.parse(userInfo).loggedIn;
-    return localStorageLoggedIn;
-  }
-  return false;
-};
-
-export default isLoggedIn;
+export { default as setLocalStorage, getLocalStorage } from "./localStorage";
+export { default as TokenValidation } from "./tokenValidation";

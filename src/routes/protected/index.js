@@ -1,20 +1,14 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
+import { getLocalStorage } from "utils";
 
 const ProtectedRoute = ({ component: Component, ...rest }) => {
-  const isLoggedIn = () => {
-    const userInfo = localStorage.getItem("userInfo");
-    if (userInfo !== null) {
-      return true;
-    }
-    return false;
-  };
 
   return (
     <Route
       {...rest}
       render={(props) => {
-        if (isLoggedIn()) {
+        if (getLocalStorage('userInfo')) {
           return <Component {...rest} {...props} />;
         } else {
           return (
