@@ -1,9 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router } from "react-router-dom";
-import withReduxFeatures from "./withReduxFeatures";
+import withReduxFeatures from "./setup/redux/withReduxFeatures";
 import App from "./App";
-import * as serviceWorker from "./serviceWorker";
+import * as serviceWorker from "./setup/redux/serviceWorker";
+
 
 /** Wrap App component with store providers */
 const WrappedApp = withReduxFeatures(App);
